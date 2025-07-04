@@ -1,4 +1,4 @@
-name: CPU Counter 
+name: CPU Counter
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         run: |
           echo 1 >> cpu_info.txt
 
-     - name: wait
+      - name: Wait a bit
         run: |
           sleep 20
 
