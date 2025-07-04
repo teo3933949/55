@@ -19,7 +19,7 @@ jobs:
         run: |
           echo 1 >> cpu_info.txt
 
-      name: wait
+     - name: wait
         run: |
           sleep 20
 
