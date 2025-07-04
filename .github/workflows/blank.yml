@@ -1,4 +1,5 @@
-name: lscpu
+
+name: CPU Counter 
 
 on:
   push:
@@ -7,25 +8,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  loop-lscpu:
+  count-cpu:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Run lscpu and save to file
+      - name: Create or append '1' to cpu_info.txt
         run: |
-          lscpu
-          
-      - name: wait
+          echo 1 >> cpu_info.txt
+
+      name: wait
         run: |
           sleep 20
 
-      - name: Commit and push updated file
+      - name: Commit and push updated cpu_info.txt
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add cpu_info.txt
-          git commit -m "Update CPU info"
+          git commit -m "Append 1 to cpu_info.txt"
           git push
